@@ -104,12 +104,12 @@ class PropertyList extends PropertyContainer implements List<dynamic> {
   void retainMatching(bool test(dynamic)) => _objectData.retainMatching(test);
   Iterator<dynamic> get iterator => _objectData.iterator;
   dynamic get single => _objectData.single;
-  Iterable<dynamic> mappedBy(dynamic f(dynamic)) => _objectData.mappedBy(f);
-  Iterable<dynamic> map(dynamic f(dynamic)) => _objectData.mappedBy(f);
+  Iterable<dynamic> mappedBy(dynamic f(dynamic)) => _objectData.map(f);
+  Iterable<dynamic> map(dynamic f(dynamic)) => _objectData.map(f);
   Iterable<dynamic> where(bool f(dynamic)) => _objectData.where(f);
   String join([String separator]) => _objectData.join(separator);
   bool any(bool f(dynamic)) => _objectData.any(f);
-  List<dynamic> toList() => _objectData.toList();
+  List<dynamic> toList({ bool growable: true }) => _objectData.toList(growable: growable);
   Set<dynamic> toSet() => _objectData.toSet();
   dynamic min([int compare(dynamic a, dynamic b)]) => _objectData.min(compare);
   dynamic max([int compare(dynamic a, dynamic b)]) => _objectData.max(compare);
