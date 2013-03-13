@@ -71,7 +71,7 @@ class PropertyList extends PropertyContainer implements List<dynamic> {
   dynamic get first => _objectData.first;
   dynamic get last => _objectData.last;
   void add(dynamic value) => _objectData.add(_validate(value));
-  void addLast(dynamic value) => _objectData.addLast(_validate(value));
+  void addLast(dynamic value) => _objectData.add(_validate(value));
   void addAll(Collection<dynamic> collection) {
     for (var item in collection) {
       _objectData.add(_validate(item));
@@ -154,20 +154,20 @@ class PropertyList extends PropertyContainer implements List<dynamic> {
     }
 
     var buffer = new StringBuffer();
-    buffer.add('[');
+    buffer.write('[');
     for (var i = 0; i < _objectData.length ; i++) {
       if (i > 0) {
-        buffer.add(',');
+        buffer.write(',');
       }
       var value = _objectData[i];
       if (value is num || value is bool) {
-        buffer.add(value);
+        buffer.write(value);
       }
       else if (value is String) {
-        buffer.add('"${value}"');
+        buffer.write('"${value}"');
       }
       else if (value is Serializable) {
-        buffer.add(value.toJson());
+        buffer.write(value.toJson());
       }
       else {
         var mirror = reflect(value);
@@ -175,7 +175,7 @@ class PropertyList extends PropertyContainer implements List<dynamic> {
         '${mirror.type.simpleName}.';
       }
     }
-    buffer.add(']');
+    buffer.write(']');
     return buffer.toString();
   }
 
