@@ -14,3 +14,4 @@ homepage: https://github.com/sethillgard/property_map
 dependencies:
   unittest: any
   browser: any
+  bot: ">=0.15.0+2"
