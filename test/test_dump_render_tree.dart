@@ -14,7 +14,7 @@ void testCore(Configuration config) {
 }
 
 void testRun() {
-  final browserTests = ['test/property_map_test.html'];
+  final browserTests = ['test/headless_property_map_test.html'];
 
   group('DumpRenderTree', () {
     browserTests.forEach((file) {
@@ -30,8 +30,12 @@ void _runDrt(String htmlFile) {
 
   final future = Process.run('DumpRenderTree', [htmlFile])
     .then((ProcessResult pr) {
-      expect(pr.exitCode, 0);
-      expect(pr.stdout, matches(allPassedRegExp));
+      expect(pr.exitCode, 0, reason: 'DumpRenderTree should return exit code 0 - success');
+
+      if(!allPassedRegExp.hasMatch(pr.stdout)) {
+        print(pr.stdout);
+        fail('Could not find success value in stdout: ${allPassedRegExp.pattern}');
+      }
     });
 
   expect(future, completes);
