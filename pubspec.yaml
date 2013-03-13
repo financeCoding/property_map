@@ -13,3 +13,4 @@ description: "PropertyMap allows you to quickly implement property bags in dart.
 homepage: https://github.com/sethillgard/property_map
 dependencies:
   unittest: any
+  browser: any
