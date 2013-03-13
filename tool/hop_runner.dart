@@ -5,6 +5,9 @@ import 'dart:io';
 import 'package:bot/hop.dart';
 import 'package:bot/hop_tasks.dart';
 
+import '../test/test_dump_render_tree.dart' as test_dump_render_tree;
+
+
 void main() {
   _assertKnownPath();
 
@@ -16,6 +19,14 @@ void main() {
                                                  ]));
   addTask('analyze_test', createDartAnalyzerTask(['test/property_map_test.dart']));
 
+  //
+  // Unit test headless browser
+  //
+  addTask('headless_test', createUnitTestTask(test_dump_render_tree.testCore));
+
+  //
+  // Doc generation
+  //
   addTask('docs', createDartDocTask(_getLibs));
 
   runHop();
