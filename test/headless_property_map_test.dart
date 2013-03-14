@@ -6,6 +6,7 @@ import 'package:property_map/property_map.dart';
 import 'tests.dart' as tests;
 
 void main() {
+  useHtmlConfiguration();
   tests.main();
 }
 
