@@ -14,4 +14,6 @@ homepage: https://github.com/sethillgard/property_map
 dependencies:
   unittest: '>=0.4.1'
   browser: '>=0.4.1'
-  bot: ">=0.15.0+2"
+#  bot: ">=0.15.0+2"
+  bot:
+    git: https://github.com/kevmoo/bot.dart.git
