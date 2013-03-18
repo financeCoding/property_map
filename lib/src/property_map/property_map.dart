@@ -188,20 +188,20 @@ class PropertyMap extends PropertyContainer implements Map<String, dynamic> {
     }
 
     var buffer = new StringBuffer();
-    buffer.add('{');
+    buffer.write('{');
     var first = true;
     for (var key in _objectData.keys) {
-      first ? first = false : buffer.add(',');
-      buffer.add('"${key}":');
+      first ? first = false : buffer.write(',');
+      buffer.write('"${key}":');
       var value = _objectData[key];
       if (value is num || value is bool) {
-        buffer.add(value);
+        buffer.write(value);
       }
       else if (value is String) {
-        buffer.add('"${value}"');
+        buffer.write('"${value}"');
       }
       else if (value is Serializable) {
-        buffer.add(value.toJson());
+        buffer.write(value.toJson());
       }
       else {
         var mirror = reflect(value);
@@ -209,7 +209,7 @@ class PropertyMap extends PropertyContainer implements Map<String, dynamic> {
         '${mirror.type.simpleName}.';
       }
     }
-    buffer.add('}');
+    buffer.write('}');
     return buffer.toString();
   }
 
